@@ -5,7 +5,7 @@
 
 ### Getting started
 
-Make sure postgres is turned on by running: `sudo systemctl enable postgresql`
+Make sure postgres is turned on by running: `sudo /etc/init.d/postgresql restart`
 
 First time running the app, run the following:
 
