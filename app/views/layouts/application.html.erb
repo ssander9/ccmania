@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CCmania</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+
+  </head>
+
+  <body class="bg-gray-200">
+    <nav class="bg-white">
+      <ul class="flex items-center">
+        <li class="p-8">
+          <a href="/">
+            <h1 class="font-medium text-green-500 hover:text-green-300 text-2xl">CCMania</h1>
+          </a>
+        </li>
+        <li class="p-8">
+          <a href="/about_us" class="text-blue-500 hover:text-blue-300 text-2xl">About Us</a>
+        </li>
+        <li class="p-8">
+          <a href="/contact" class="text-blue-500 hover:text-blue-300 text-2xl">Contact</a>
+        </li>
+        <li class="p-8">
+          <a href="/credit_cards" class="text-blue-500 hover:text-blue-300 text-2xl">Credit Cards</a>
+        </li>
+        <li class="p-8 text-right">
+          <a href="/users/new" class="text-blue-500 hover:text-blue-300 text-2xl">Sign Up</a>
+        </li>
+      </ul>    
+    </nav>
+    <hr>
+    <hr>
+    <div class="p-8 text-lg">
+      <%= yield %>
+    </div>
+  </body>
+</html>

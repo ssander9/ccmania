@@ -1,0 +1,30 @@
+<div class="container mx-auto max-w-2xl bg-white p-12 pt-6 shadow rounded">
+    <%= form_with model: @user do |f| %>
+        <%= f.label :name, class: 'block font-bold mt-4 mb-2' %>
+
+        <%= 
+            f.text_field :name, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            placeholder: 'Your Name' 
+        %>
+        
+        <%= f.label :email, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :email, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            placeholder: 'youremail@gmail.com' 
+        %>
+
+        <%= f.label :password, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.password_field :password, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            placeholder: '**************' 
+        %>
+
+        <%= 
+            f.submit 'Sign up', 
+            class: 'block w-full cursor-pointer bg-green-500 shadow hover:bg-green-600 text-white py-2 px-4 leading-tight focus:outline-none focus:shadow-outline mt-6'
+        %>
+    <% end %>
+</div>
