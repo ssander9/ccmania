@@ -1,0 +1,177 @@
+<h1>See how your card stacks up!</h1>
+
+<div>
+  <% @credit_card.each do |credit_card| %>
+    <div class="flex mt-6 mb-6 rounded-lg border border-gray-400 bg-white w-1/2">
+      <div class="p-4 w-1/3 h-64">
+        <p class="text-blue-500 hover:text-blue-300 font-semibold"><%= link_to "#{credit_card.card_provider.to_s.titlecase} #{credit_card.card_name.titlecase}", credit_card_path(credit_card.handle) %></p>
+        <img class="mt-4 rounded shadow-lg" src="<%="img/cards/#{credit_card.card_provider.to_s.downcase.parameterize}-#{credit_card.card_name.downcase.parameterize}.png"%>" alt="Credit Card">
+      </div>
+      <div class="text-gray-700 p-4 w-1/3">
+        <h1 class="text-gray-800 font-semibold">Points & Rewards</h1>
+        <% if credit_card.gas>=2 %>
+          <p class="mt-2 text-gray-700"> Gas: <%= credit_card.gas %> </p>
+        <% end %>
+        <% if credit_card.transit>=2 %>
+          <p class="mt-2 text-gray-700"> Transit: <%= credit_card.transit %> </p>
+        <% end %>
+        <% if credit_card.rideshare>=2 %>
+          <p class="mt-2 text-gray-700"> Rideshare: <%= credit_card.rideshare %> </p>
+        <% end %>
+        <% if credit_card.entertainment>=2 %>
+          <p class="mt-2 text-gray-700"> Entertainment: <%= credit_card.entertainment %> </p>
+        <% end %>
+        <% if credit_card.streaming>=2 %>
+          <p class="mt-2 text-gray-700"> Streaming: <%= credit_card.streaming %> </p>
+        <% end %>
+        <% if credit_card.dining>=2 %>
+          <p class="mt-2 text-gray-700"> Dining: <%= credit_card.dining %> </p>
+        <% end %>
+        <% if credit_card.grocery>=2 %>
+          <p class="mt-2 text-gray-700"> Grocery: <%= credit_card.grocery %> </p>
+        <% end %>
+        <% if credit_card.drugstore>=2 %>
+          <p class="mt-2 text-gray-700"> Drugstore: <%= credit_card.drugstore %> </p>
+        <% end %>
+        <% if credit_card.department_store>=2 %>
+          <p class="mt-2 text-gray-700"> Department Store: <%= credit_card.department_store %> </p>
+        <% end %>
+        <% if credit_card.clothing>=2 %>
+          <p class="mt-2 text-gray-700"> Clothing: <%= credit_card.clothing %> </p>
+        <% end %>
+        <% if credit_card.travel>=2 %>
+          <p class="mt-2 text-gray-700"> Travel: <%= credit_card.travel %> </p>
+        <% end %>
+        <% if credit_card.other>=2 %>
+          <p class="mt-2 text-gray-700"> Other: <%= credit_card.other %> </p>
+        <% end %>
+          <p class="mt-2 text-gray-700"> All Purchases: <%= credit_card.other%></p>
+      </div>
+      <div class="p-4 w-1/3">
+        <p class="font-semibold">Highlights</p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<table class="border-b-2 border-t-2 border-black">
+  <tr class="">
+    <th class="text-sm text-center border-b-2 border-l-2 border-black bg-green-200" colspan="1"></th>
+    <th class="text-sm text-center border-b-2 border-black bg-green-200" colspan="2">Card Details</th>
+    <th class="text-sm text-center border-black bg-green-200"></th>
+    <th class="text-sm text-center border-b-2 border-black bg-green-200" colspan="12">Rewards Categories</th>
+    <th class="text-sm text-center border-b-2 border-r-2 border-black bg-green-200" colspan="2"></th>
+  </tr>
+  <tr class="">
+    <th class="px-2 py-4 text-sm text-left bg-gray-100 border-b border-l-2 border-black"><div class="border-gray-100">Card Name</div></th>
+    <th class="text-sm bg-gray-100 border-b border-black">Annual Fee</th>
+    <th class="text-sm bg-gray-100 border-b border-black">Signup Bonus</th>
+    <th class="px-1 text-sm bg-gray-100 border-b border-black"></th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Gas</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Transit</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Rideshare</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Entertainment</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Streaming</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Dining</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Grocery</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Drugstore</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Department Store</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Clothing</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Travel</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-black">Other</th>
+    <th class="px-2 text-sm bg-gray-100 border-b border-r-2 border-black" colspan="2"></th>
+  </tr>
+ 
+  <% @credit_card.each do |credit_card| %>
+    <tr class="">
+      <td class="py-3 px-2 text-sm text-left bg-white border-b border-l-2 border-gray-400 font-semibold text-blue-500 hover:text-blue-300"> <%= link_to "#{credit_card.card_provider.to_s.titlecase} #{credit_card.card_name.titlecase}", credit_card_path(credit_card.handle) %> </td>     
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= humanized_money_with_symbol(credit_card.annual_fee) %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= humanized_money_with_symbol(credit_card.signup_bonus) %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"></td>
+      <td class="px-3 text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.gas %> </td>
+      <td class="px-3 text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.transit %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.rideshare %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.entertainment %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.streaming %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.dining %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.grocery %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.drugstore %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.department_store %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.clothing %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.travel %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.other %> </td>
+      <td class="px-2 text-sm text-center bg-white border-b border-gray-400 text-blue-500 hover:text-blue-300 "> 
+      <% if current_user && current_user.is_admin %>
+        <%= link_to 'Edit', edit_credit_card_path(credit_card) %>
+      <% end %> </td>
+      <td class="px-2 text-sm text-center bg-white border-b border-r-2 border-gray-400 text-blue-500 hover:text-blue-300 "> 
+      <% if current_user && current_user.is_admin %>
+        <%= link_to 'Delete', credit_card_path(credit_card),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+<br>
+<% if current_user && current_user.is_admin %>
+  <%= link_to 'Enter a new card', new_credit_card_path, class: "text-blue-500 hover:text-blue-300 text-base" %>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<% 
+=begin %>
+<td class="px-2 text-sm text-center bg-white border-b border-gray-400"> <%= credit_card.card_category.capitalize %> </td>
+      <td class="text-sm text-center bg-white border-b border-gray-400"> <%= if credit_card.card_network == "visa" then credit_card.card_network.capitalize 
+        elsif credit_card.card_network == "amex" then "AmEx"
+        elsif credit_card.card_network == "mastercard" then credit_card.card_network.capitalize
+        else credit_card.card_network.capitalize
+        end %> </td>
+
+
+
+<div>
+  <p>Rewards Breakdown</p>
+</div>
+<div class="container">  
+  <div class="flex flex-no-wrap">
+    <div class="px-30 py-2 bg-green-200 border"><p class="text-sm font-bold">Credit Card</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Gas</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Transit</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Rideshare</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Entertainment</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Streaming</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Dining</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Grocery</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Drugstore</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Department Store</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Clothing</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Travel</p></div>
+    <div class="px-4 py-2 bg-green-200 border "><p class="text-sm font-bold">Other</p></div>
+  </div>
+
+<% @credit_card.each do |credit_card| %>
+  <div class="flex">
+    <div class="px-24 py-2 bg-white-200 border"> <p class="text-sm text-blue-500 hover:text-blue-300"> <%= link_to credit_card.card_provider.to_s.capitalize + " " + credit_card.card_name, credit_card_path(credit_card)  %></p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.gas %> </p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.transit %> </p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.rideshare %> </p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.entertainment %> </p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.streaming %> </p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.dining %> </p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.grocery %> </p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.drugstore %> </p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.department_store %> </p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.clothing %> </p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.travel %> </p></div>
+    <div class="px-4 py-2 bg-white-200 border"> <p class="text-sm"> <%= credit_card.other %> </p></div>
+  </div>
+<% end %>
+</div>
+<%
+=end %>

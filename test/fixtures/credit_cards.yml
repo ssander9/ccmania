@@ -1,0 +1,43 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  card_provider: MyString
+  card_name: MyString
+  card_network: MyString
+  card_category: MyString
+  signup_bonus: 1
+  signup_bonus_spending_requirement: 1
+  annual_fee: 1
+  gas: 9.99
+  transit: 9.99
+  rideshare: 9.99
+  entertainment: 9.99
+  streaming: 9.99
+  dining: 9.99
+  grocery: 9.99
+  drugstore: 9.99
+  department_store: 9.99
+  clothing: 9.99
+  travel: 9.99
+  other: 9.99
+
+two:
+  card_provider: MyString
+  card_name: MyString
+  card_network: MyString
+  card_category: MyString
+  signup_bonus: 1
+  signup_bonus_spending_requirement: 1
+  annual_fee: 1
+  gas: 9.99
+  transit: 9.99
+  rideshare: 9.99
+  entertainment: 9.99
+  streaming: 9.99
+  dining: 9.99
+  grocery: 9.99
+  drugstore: 9.99
+  department_store: 9.99
+  clothing: 9.99
+  travel: 9.99
+  other: 9.99

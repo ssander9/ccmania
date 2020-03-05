@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_15_214222) do
+ActiveRecord::Schema.define(version: 2020_02_21_215446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "card_provider"
+    t.string "card_name"
+    t.string "card_network"
+    t.string "card_category"
+    t.integer "signup_bonus"
+    t.integer "signup_bonus_spending_requirement"
+    t.integer "annual_fee"
+    t.decimal "gas"
+    t.decimal "transit"
+    t.decimal "rideshare"
+    t.decimal "entertainment"
+    t.decimal "streaming"
+    t.decimal "dining"
+    t.decimal "grocery"
+    t.decimal "drugstore"
+    t.decimal "department_store"
+    t.decimal "clothing"
+    t.decimal "travel"
+    t.decimal "other"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "handle"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -21,6 +46,32 @@ ActiveRecord::Schema.define(version: 2020_01_15_214222) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "annual_dining", default: "0.0"
+    t.integer "gas_cents", default: 0, null: false
+    t.string "gas_currency", default: "USD", null: false
+    t.integer "transit_cents", default: 0, null: false
+    t.string "transit_currency", default: "USD", null: false
+    t.integer "rideshare_cents", default: 0, null: false
+    t.string "rideshare_currency", default: "USD", null: false
+    t.integer "entertainment_cents", default: 0, null: false
+    t.string "entertainment_currency", default: "USD", null: false
+    t.integer "streaming_cents", default: 0, null: false
+    t.string "streaming_currency", default: "USD", null: false
+    t.integer "dining_cents", default: 0, null: false
+    t.string "dining_currency", default: "USD", null: false
+    t.integer "grocery_cents", default: 0, null: false
+    t.string "grocery_currency", default: "USD", null: false
+    t.integer "drugstore_cents", default: 0, null: false
+    t.string "drugstore_currency", default: "USD", null: false
+    t.integer "department_store_cents", default: 0, null: false
+    t.string "department_store_currency", default: "USD", null: false
+    t.integer "clothing_cents", default: 0, null: false
+    t.string "clothing_currency", default: "USD", null: false
+    t.integer "travel_cents", default: 0, null: false
+    t.string "travel_currency", default: "USD", null: false
+    t.integer "other_cents", default: 0, null: false
+    t.string "other_currency", default: "USD", null: false
+    t.boolean "is_admin", default: false
   end
 
 end

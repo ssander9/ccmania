@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   get '/', to: 'home#index'
   get '/about_us', to: 'home#about_us'
   get '/contact', to: 'home#contact'
-  get '/credit_cards', to: 'home#credit_cards'
 
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
+  get '/rewards_matrix', to: 'credit_cards#rewards_matrix'
+
+  resources :credit_cards
   resources :users
 end

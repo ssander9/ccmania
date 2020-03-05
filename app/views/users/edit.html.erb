@@ -1,0 +1,165 @@
+<div class="container mx-auto max-w-2xl bg-white p-12 pt-6 shadow rounded">
+    <h1>Please enter the information you wish to change.</h1>  
+    <%= form_with model: @user do |f| %>
+        <%= f.label :name, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 text-gray-200 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :name, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            placeholder: 'Name' 
+        %>
+        </div>
+
+        <%= f.label :email, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 text-gray-200 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :email, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            placeholder: 'Email' 
+        %>
+        </div>
+
+        <%= f.label :gas, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+            <%= 
+                f.text_field :gas, 
+                class: 'block appearance-none border rounded rounded-l-none w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+                value: humanized_money(f.object.gas, precision: 0, delimiter: ','),
+                placeholder: '$' 
+            %>
+        </div>
+
+        <%= f.label :transit, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :transit, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(f.object.transit, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= f.label :rideshare, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :rideshare, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(f.object.rideshare, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= f.label :entertainment, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :entertainment, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(f.object.entertainment, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= f.label :streaming, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :streaming, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(f.object.streaming, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= f.label :dining, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :dining, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(f.object.dining, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= f.label :grocery, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :grocery, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(f.object.grocery, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= f.label :drugstore, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :drugstore, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(f.object.drugstore, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= f.label :department_store, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :department_store, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(f.object.department_store, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= f.label :clothing, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :clothing, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(f.object.clothing, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= f.label :travel, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :travel, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(f.object.travel, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= f.label :other, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :other, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(f.object.other, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= 
+            f.submit 'Update Profile', 
+            class: 'block w-full cursor-pointer bg-green-500 shadow hover:bg-green-600 text-white py-2 px-4 leading-tight focus:outline-none focus:shadow-outline mt-6'
+        %>
+    <% end %>
+    <br>
+    <div>
+        <%= link_to "Don't want to make changes? Click here to return to the previous page.", user_path(current_user.id), class: "text-blue-500 hover:text-blue-300 text-sm" %>
+    </div>
+</div>

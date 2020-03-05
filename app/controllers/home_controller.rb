@@ -8,7 +8,7 @@ class HomeController < ApplicationController
     def contact
     end
 
-    def credit_cards
+    def dropdown
     end
 
 end

@@ -1,4 +1,31 @@
-<h1>Hi user!</h1>
+<h1>Hi <%= @user.name %>! Welcome back to CCMania!</h1>
+<br>
 
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
+<div class="container p-3 bg-white border border-gray-400 rounded">
+  <p class="font-bold">Account Information</p>
+  <p>Name: <%= @user.name %></p>
+  <p>Email: <%= @user.email %></p>
+</div>
+<br>
+
+<div class="container p-3 bg-white border border-gray-400 rounded">
+  <p class="font-bold">Annual Spending Categories</p>
+  <p>Gas: <%=humanized_money_with_symbol(@user.gas) %></p>
+  <p>Transit: <%=humanized_money_with_symbol(@user.transit) %></p>
+  <p>Rideshare: <%=humanized_money_with_symbol(@user.rideshare) %></p>
+  <p>Entertainment: <%=humanized_money_with_symbol(@user.entertainment) %></p>
+  <p>Streaming: <%=humanized_money_with_symbol(@user.streaming) %></p>
+  <p>Dining: <%=humanized_money_with_symbol(@user.dining) %></p>
+  <p>Grocery: <%=humanized_money_with_symbol(@user.grocery) %></p>
+  <p>Drugstore: <%=humanized_money_with_symbol(@user.drugstore) %></p>
+  <p>Department Store: <%=humanized_money_with_symbol(@user.department_store) %></p>
+  <p>Clothing: <%=humanized_money_with_symbol(@user.clothing) %></p>
+  <p>Travel: <%=humanized_money_with_symbol(@user.travel) %></p>
+  <p>Other: <%=humanized_money_with_symbol(@user.other) %></p>
+  <p>Total Spending: <%=humanized_money_with_symbol(@user.gas + @user.transit + @user.rideshare + @user.entertainment + @user.streaming + @user.dining + @user.grocery + @user.drugstore + @user.department_store + @user.clothing + @user.travel + @user.other) %></p>
+</div>
+<br>
+
+<div>
+  <%= link_to 'Update Profile', edit_user_path(current_user.id), class: "text-blue-500 hover:text-blue-300 text-lg" %>
+</div>

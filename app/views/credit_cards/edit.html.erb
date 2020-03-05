@@ -1,0 +1,150 @@
+<div class="container mx-auto max-w-lg bg-white p-12 pt-6 shadow rounded">
+    <h1 class="text-2xl ">Edit Card Information</h1>
+    <%= form_with model: @credit_card do |f| %>
+        
+        <%= f.label :card_provider, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :card_provider, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.card_provider
+        %>
+
+        <%= f.label :card_name, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :card_name,
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.card_name
+        %>
+
+        <%= f.label :card_network, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.select :card_network, options_for_select([["VISA", :visa], ["AMEX", :amex], ["MasterCard", :mastercard], ["Discover", :discover]]),
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.card_network
+        %>
+
+        <%= f.label :card_category, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.select :card_category, options_for_select([["Cash Back", :cash_back], ["Rewards", :rewards]]),
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.card_category
+        %>
+
+        <%= f.label :annual_fee, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :annual_fee, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(@credit_card.annual_fee, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+
+        <%= f.label :signup_bonus, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :signup_bonus, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(@credit_card.signup_bonus, precision: 0, delimiter: ',')
+        %>
+
+        <%= f.label :signup_bonus_spending_requirement, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :signup_bonus_spending_requirement, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: number_with_precision(@credit_card.signup_bonus_spending_requirement, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+
+        <%= f.label :gas, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :gas, value: 1, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.gas
+        %>
+
+        <%= f.label :transit, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :transit, value: 1, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.transit
+        %>
+
+        <%= f.label :rideshare, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :rideshare, value: 1, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.rideshare
+        %>
+
+        <%= f.label :entertainment, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :entertainment, value: 1,
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.entertainment
+        %>
+
+        <%= f.label :streaming, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :streaming, value: 1,
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.streaming
+        %>
+
+        <%= f.label :dining, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :dining, value: 1,
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.dining
+        %>
+
+        <%= f.label :grocery, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :grocery, value: 1, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.grocery
+        %>
+
+        <%= f.label :drugstore, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :drugstore, value: 1, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.drugstore
+        %>
+
+        <%= f.label :department_store, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :department_store, value: 1, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.department_store
+        %>
+
+        <%= f.label :clothing, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :clothing, value: 1, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.clothing
+        %>
+
+        <%= f.label :travel, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :travel, value: 1,
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.travel
+        %>
+
+        <%= f.label :other, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :other, value: 1, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: @credit_card.other
+        %>
+
+        <%= 
+            f.submit 'Update Card Information', 
+            class: 'block w-full cursor-pointer bg-green-500 shadow hover:bg-green-600 text-white py-2 px-4 leading-tight focus:outline-none focus:shadow-outline mt-6'
+        %>
+    <% end %>
+    <br>
+    <div>
+        <%= link_to "Don't want to make changes? Click here to return to the previous page.", credit_card_path, class: "text-blue-500 hover:text-blue-300 text-sm" %>
+    </div>
+    <br>
+</div>

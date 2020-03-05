@@ -1,0 +1,69 @@
+<div class="flex text-gray-800">
+  <div class="p-8 ml-20 bg-gray-100 w-2/5">
+    <p class="mb-4 font-bold"><%= "#{@credit_card.card_provider.titlecase} #{@credit_card.card_name.titlecase}" %></p>
+    <img class="rounded-lg shadow-xl" src="<%= "/img/cards/#{@credit_card.card_provider.downcase.parameterize}-#{@credit_card.card_name.downcase.parameterize}.png" %>" alt="Credit Card">
+    <p class="font-semibold mt-10"> Details </p>
+    <p class="py-4"> <%= "Annual Fee: #{humanized_money_with_symbol(@credit_card.annual_fee)}*" %> </p>
+    <p class="max-w-sm"> <%= "Earn #{humanized_money_with_symbol(@credit_card.signup_bonus)} in Rewards after you spend #{humanized_money_with_symbol(@credit_card.signup_bonus_spending_requirement)} on your new card in the first 3 months."%></p>
+    <p class="py-4 text-xs text-gray-600">* See Offer Terms and Conditions</p>
+  </div>
+  <div class="p-8 bg-white border rounded-lg border-gray-300 w-3/5">
+    <p class="font-bold"> Featured Benefits </p>
+    <% if @credit_card.gas>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.gas.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Gas </p>
+    <% end %>
+    <% if @credit_card.transit>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.transit.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Transit </p>
+    <% end %>
+    <% if @credit_card.rideshare>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.rideshare.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Rideshare </p>
+    <% end %>
+    <% if @credit_card.entertainment>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.entertainment.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Entertainment </p>
+    <% end %>
+    <% if @credit_card.streaming>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.streaming.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Streaming </p>
+    <% end %>
+    <% if @credit_card.dining>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.dining.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Dining </p>
+    <% end %>
+    <% if @credit_card.grocery>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.grocery.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Grocery </p>
+    <% end %>
+    <% if @credit_card.drugstore>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.drugstore.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Drugstore </p>
+    <% end %>
+    <% if @credit_card.department_store>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.department_store.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Department Stores </p>
+    <% end %>
+    <% if @credit_card.clothing>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.clothing.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Clothing </p>
+    <% end %>
+    <% if @credit_card.travel>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.travel.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Travel </p>
+    <% end %>
+    <% if @credit_card.other>=2 %>
+      <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.other.to_s.sub(/\.?0+$/,'')}X"%></span> Points on Other </p>
+    <% end %>
+    <p class="py-4"> Earn <span class="text-blue-700 text-2xl font-semibold"><%= "#{@credit_card.other.to_s.sub(/\.?0+$/,'')}X"%></span> Points on All Purchases </p>
+  </div>
+</div>
+
+<br>
+<% if current_user && current_user.is_admin %>
+  <div class = "text-blue-500 hover:text-blue-300 text-lg">
+    <%=link_to 'Edit this card', edit_credit_card_path(@credit_card.handle)%>
+  </div>
+<% end %>
+
+<% if current_user && current_user.is_admin %>
+  <div class = "text-blue-500 hover:text-blue-300 text-lg">
+    <%= link_to 'Delete this card', credit_card_path(@credit_card.handle),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>
+
+<div class = "text-blue-500 hover:text-blue-300 text-lg">
+  <%= link_to 'Back', credit_cards_path %>
+</div>
