@@ -8,7 +8,4 @@ class HomeController < ApplicationController
     def contact
     end
 
-    def dropdown
-    end
-
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_215446) do
+ActiveRecord::Schema.define(version: 2020_03_17_133213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2020_02_21_215446) do
     t.string "card_provider"
     t.string "card_name"
     t.string "card_network"
-    t.string "card_category"
     t.integer "signup_bonus"
     t.integer "signup_bonus_spending_requirement"
     t.integer "annual_fee"
@@ -38,6 +37,22 @@ ActiveRecord::Schema.define(version: 2020_02_21_215446) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "handle"
+    t.string "rewards_category"
+    t.decimal "hotel"
+  end
+
+  create_table "credit_cards_users_owned", force: :cascade do |t|
+    t.bigint "credit_card_id"
+    t.bigint "user_id"
+    t.index ["credit_card_id"], name: "index_credit_cards_users_owned_on_credit_card_id"
+    t.index ["user_id"], name: "index_credit_cards_users_owned_on_user_id"
+  end
+
+  create_table "credit_cards_users_starred", force: :cascade do |t|
+    t.bigint "credit_card_id"
+    t.bigint "user_id"
+    t.index ["credit_card_id"], name: "index_credit_cards_users_starred_on_credit_card_id"
+    t.index ["user_id"], name: "index_credit_cards_users_starred_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,6 +87,8 @@ ActiveRecord::Schema.define(version: 2020_02_21_215446) do
     t.integer "other_cents", default: 0, null: false
     t.string "other_currency", default: "USD", null: false
     t.boolean "is_admin", default: false
+    t.integer "hotel_cents", default: 0, null: false
+    t.string "hotel_currency", default: "USD", null: false
   end
 
 end

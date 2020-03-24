@@ -20,9 +20,9 @@
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
         %>
 
-        <%= f.label :card_category, class: 'block font-bold mt-4 mb-2' %>
+        <%= f.label :rewards_category, class: 'block font-bold mt-4 mb-2' %>
         <%= 
-            f.select :card_category, options_for_select([["Cash Back", :cash_back], ["Rewards", :rewards]]),
+            f.select :rewards_category, options_for_select([["Cash Back", :cash_back], ["Points", :points], ["Miles", :miles]]),
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
         %>
 
@@ -112,6 +112,12 @@
         <%= f.label :travel, class: 'block font-bold mt-4 mb-2' %>
         <%= 
             f.text_field :travel, value: 1,
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+        %>
+
+        <%= f.label :hotel, class: 'block font-bold mt-4 mb-2' %>
+        <%= 
+            f.text_field :hotel, value: 1,
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
         %>
 

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
    
     def new
       @user = User.new
+      redirect_to '/login'
     end
 
     def create
@@ -32,6 +33,8 @@ class UsersController < ApplicationController
       end 
     end
 
+    
+
     private
 
     def user_params
@@ -39,6 +42,6 @@ class UsersController < ApplicationController
     end
 
     def edit_user_params
-      params.require(:user).permit(:name, :email, :gas, :transit, :rideshare, :entertainment, :streaming, :dining, :grocery, :drugstore, :department_store, :clothing, :travel, :other)
+      params.require(:user).permit(:name, :email, :gas, :transit, :rideshare, :entertainment, :streaming, :dining, :grocery, :drugstore, :department_store, :clothing, :travel, :hotel, :other)
     end
 end

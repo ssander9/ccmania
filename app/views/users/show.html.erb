@@ -1,30 +1,113 @@
-<h1>Hi <%= @user.name %>! Welcome back to CCMania!</h1>
-<br>
+<h1 class=""><span class="font-semibold text-gray-800">Hi <%= @user.name %>!</span> Welcome back to CCMania!</h1>
 
-<div class="container p-3 bg-white border border-gray-400 rounded">
-  <p class="font-bold">Account Information</p>
-  <p>Name: <%= @user.name %></p>
-  <p>Email: <%= @user.email %></p>
+<div class="flex text-gray-800">
+  <div class="my-4 p-3 w-full bg-white border border-gray-400 rounded">
+    <p class="font-bold">Account Information</p>
+    <p>Name: <%= @user.name %></p>
+    <p>Email: <%= @user.email %></p>
+  </div>
 </div>
-<br>
 
-<div class="container p-3 bg-white border border-gray-400 rounded">
-  <p class="font-bold">Annual Spending Categories</p>
-  <p>Gas: <%=humanized_money_with_symbol(@user.gas) %></p>
-  <p>Transit: <%=humanized_money_with_symbol(@user.transit) %></p>
-  <p>Rideshare: <%=humanized_money_with_symbol(@user.rideshare) %></p>
-  <p>Entertainment: <%=humanized_money_with_symbol(@user.entertainment) %></p>
-  <p>Streaming: <%=humanized_money_with_symbol(@user.streaming) %></p>
-  <p>Dining: <%=humanized_money_with_symbol(@user.dining) %></p>
-  <p>Grocery: <%=humanized_money_with_symbol(@user.grocery) %></p>
-  <p>Drugstore: <%=humanized_money_with_symbol(@user.drugstore) %></p>
-  <p>Department Store: <%=humanized_money_with_symbol(@user.department_store) %></p>
-  <p>Clothing: <%=humanized_money_with_symbol(@user.clothing) %></p>
-  <p>Travel: <%=humanized_money_with_symbol(@user.travel) %></p>
-  <p>Other: <%=humanized_money_with_symbol(@user.other) %></p>
-  <p>Total Spending: <%=humanized_money_with_symbol(@user.gas + @user.transit + @user.rideshare + @user.entertainment + @user.streaming + @user.dining + @user.grocery + @user.drugstore + @user.department_store + @user.clothing + @user.travel + @user.other) %></p>
+<div class="flex text-gray-800 ">
+  <div class="p-3 w-1/3 bg-white border border-gray-400 rounded">
+    <p class="font-bold">Annual Spending Categories</p>
+    <p>Gas: <%=humanized_money_with_symbol(@user.gas) %></p>
+    <p>Transit: <%=humanized_money_with_symbol(@user.transit) %></p>
+    <p>Rideshare: <%=humanized_money_with_symbol(@user.rideshare) %></p>
+    <p>Entertainment: <%=humanized_money_with_symbol(@user.entertainment) %></p>
+    <p>Streaming: <%=humanized_money_with_symbol(@user.streaming) %></p>
+    <p>Dining: <%=humanized_money_with_symbol(@user.dining) %></p>
+    <p>Grocery: <%=humanized_money_with_symbol(@user.grocery) %></p>
+    <p>Drugstore: <%=humanized_money_with_symbol(@user.drugstore) %></p>
+    <p>Department Store: <%=humanized_money_with_symbol(@user.department_store) %></p>
+    <p>Clothing: <%=humanized_money_with_symbol(@user.clothing) %></p>
+    <p>Travel: <%=humanized_money_with_symbol(@user.travel) %></p>
+    <p>Hotel: <%=humanized_money_with_symbol(@user.hotel) %></p>
+    <p>Other: <%=humanized_money_with_symbol(@user.other) %></p>
+    <p>Total Spending: <%=humanized_money_with_symbol(@user.gas + @user.transit + @user.rideshare + @user.entertainment + @user.streaming + @user.dining + @user.grocery + @user.drugstore + @user.department_store + @user.clothing + @user.travel + @user.hotel + @user.other) %></p>
+  </div>
+  
+  <div class="mx-4 p-3 w-1/3 text-gray-800 bg-white border border-gray-400 rounded">
+    <div>
+      <p class="font-bold">My Wallet</p>
+      <div class="mt-2 mb-2 grid grid-cols-4 gap-2">
+        <% @user.owned_cards.each do |owned_card| %>
+          <a href="<%= "/credit_cards/#{owned_card.handle}" %>">
+            <img class="h-16 w-24 rounded-md" src="<%= "/img/cards/#{owned_card.handle}.png" %>" alt="<%= "#{owned_card.handle}"%>">
+          </a>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <p class="font-bold">Bookmarked Cards</p>
+      <div class="mt-2 mb-2 grid grid-cols-4 gap-2">
+        <% @user.starred_cards.each do |starred_card| %>
+          <a href="<%= "/credit_cards/#{starred_card.handle}" %>">
+            <img class="h-16 w-24 rounded-md" src="<%= "/img/cards/#{starred_card.handle}.png" %>" alt="<%= "#{starred_card.handle}"%>">
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-1/5">
+    <div class="p-3 text-gray-800 bg-white border border-gray-400 rounded">
+      <p class="font-bold">Current Rewards</p>
+    </div>
+
+    <div class="mt-16 p-3 text-gray-800 bg-white border border-gray-400 rounded">
+      <p class="font-bold">Possible Rewards</p>
+    </div>
+  </div>
 </div>
-<br>
+
+<div class="flex text-gray-800">
+  <div class="my-4 p-3 w-full bg-white border border-gray-400 rounded">
+    <p class="font-bold">Rewards Breakdown</p>
+
+    <table class="my-2 w-full border-b-2 border-t-2 border-gray-800">
+    
+    <tr class="px-2 py-4 text-center text-sm bg-blue-100 border-b border-gray-800">
+      <th class="px-2 py-4 text-left">Card Name</th>
+      <th class="">Gas</th>
+      <th class="">Transit</th>
+      <th class="">Rideshare</th>
+      <th class="">Entertainment</th>
+      <th class="">Streaming</th>
+      <th class="">Dining</th>
+      <th class="">Grocery</th>
+      <th class="">Drugstore</th>
+      <th class="">Department Store</th>
+      <th class="">Clothing</th>
+      <th class="">Travel</th>
+      <th class="">Hotel</th>
+      <th class="">Other</th>
+    </tr>
+
+    <tr class="px-2 py-4 text-center text-sm bg-gray-100 border-b border-gray-800">
+      <td class="px-2 py-3 text-left font-semibold">My Wallet</td>
+      <% CreditCard.first.categories.each do |category| %>
+        <td class="font-semibold"><%= @user.owned_cards.maximum(category).to_s.sub(/.0/,'') %></td>
+      <% end %>
+    </tr>
+
+    <% @user.owned_cards.each do |owned_card| %>
+    <tr class="px-2 py-4 text-center text-sm bg-white border-b border-gray-400">
+      <td class="px-2 py-3 text-left font-semibold"> <%= owned_card.card_name.titlecase %> </td>     
+      <% CreditCard.first.categories.each do |category| %>
+        <% if owned_card.public_send(category) == @user.owned_cards.maximum(category) %>
+        <td class="bg-green-100 font-semibold"> <%= owned_card.public_send(category).to_s.sub(/.0/,'') %> </td>
+        <% else %>
+        <td class="bg-white"> <%= owned_card.public_send(category).to_s.sub(/.0/,'') %> </td>
+        <% end %>
+      <% end %>
+    </tr>
+    <% end %>
+    </table>
+
+  </div>
+</div>
 
 <div>
   <%= link_to 'Update Profile', edit_user_path(current_user.id), class: "text-blue-500 hover:text-blue-300 text-lg" %>

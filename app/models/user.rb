@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    has_and_belongs_to_many :starred_cards, join_table: :credit_cards_users_starred, class_name: 'CreditCard'
+    has_and_belongs_to_many :owned_cards, join_table: :credit_cards_users_owned, class_name: 'CreditCard'
+    # has_and_belongs_to_many :credit_cards, -> {distinct}
     has_secure_password
 
     monetize :gas_cents
@@ -12,6 +15,7 @@ class User < ApplicationRecord
     monetize :department_store_cents
     monetize :clothing_cents
     monetize :travel_cents
+    monetize :hotel_cents
     monetize :other_cents
 
     validates :name, presence: true

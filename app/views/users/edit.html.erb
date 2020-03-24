@@ -38,7 +38,7 @@
         <%= 
             f.text_field :transit, 
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-            value: number_with_precision(f.object.transit, precision: 0, delimiter: ','),
+            value: humanized_money(f.object.transit, precision: 0, delimiter: ','),
             placeholder: '$' 
         %>
         </div>
@@ -49,7 +49,7 @@
         <%= 
             f.text_field :rideshare, 
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-            value: number_with_precision(f.object.rideshare, precision: 0, delimiter: ','),
+            value: humanized_money(f.object.rideshare, precision: 0, delimiter: ','),
             placeholder: '$' 
         %>
         </div>
@@ -60,7 +60,7 @@
         <%= 
             f.text_field :entertainment, 
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-            value: number_with_precision(f.object.entertainment, precision: 0, delimiter: ','),
+            value: humanized_money(f.object.entertainment, precision: 0, delimiter: ','),
             placeholder: '$' 
         %>
         </div>
@@ -71,7 +71,7 @@
         <%= 
             f.text_field :streaming, 
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-            value: number_with_precision(f.object.streaming, precision: 0, delimiter: ','),
+            value: humanized_money(f.object.streaming, precision: 0, delimiter: ','),
             placeholder: '$' 
         %>
         </div>
@@ -82,7 +82,7 @@
         <%= 
             f.text_field :dining, 
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-            value: number_with_precision(f.object.dining, precision: 0, delimiter: ','),
+            value: humanized_money(f.object.dining, precision: 0, delimiter: ','),
             placeholder: '$' 
         %>
         </div>
@@ -93,7 +93,7 @@
         <%= 
             f.text_field :grocery, 
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-            value: number_with_precision(f.object.grocery, precision: 0, delimiter: ','),
+            value: humanized_money(f.object.grocery, precision: 0, delimiter: ','),
             placeholder: '$' 
         %>
         </div>
@@ -104,7 +104,7 @@
         <%= 
             f.text_field :drugstore, 
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-            value: number_with_precision(f.object.drugstore, precision: 0, delimiter: ','),
+            value: humanized_money(f.object.drugstore, precision: 0, delimiter: ','),
             placeholder: '$' 
         %>
         </div>
@@ -115,7 +115,7 @@
         <%= 
             f.text_field :department_store, 
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-            value: number_with_precision(f.object.department_store, precision: 0, delimiter: ','),
+            value: humanized_money(f.object.department_store, precision: 0, delimiter: ','),
             placeholder: '$' 
         %>
         </div>
@@ -126,7 +126,7 @@
         <%= 
             f.text_field :clothing, 
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-            value: number_with_precision(f.object.clothing, precision: 0, delimiter: ','),
+            value: humanized_money(f.object.clothing, precision: 0, delimiter: ','),
             placeholder: '$' 
         %>
         </div>
@@ -137,7 +137,18 @@
         <%= 
             f.text_field :travel, 
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-            value: number_with_precision(f.object.travel, precision: 0, delimiter: ','),
+            value: humanized_money(f.object.travel, precision: 0, delimiter: ','),
+            placeholder: '$' 
+        %>
+        </div>
+
+        <%= f.label :hotel, class: 'block font-bold mt-4 mb-2' %>
+        <div class="flex flex-no-wrap items-center justify-center">
+            <div class="border border-r-0 rounded p-2 px-3 bg-gray-200 rounded-r-none block leading-tight"><p>$</p></div>
+        <%= 
+            f.text_field :hotel, 
+            class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+            value: humanized_money(f.object.hotel, precision: 0, delimiter: ','),
             placeholder: '$' 
         %>
         </div>
@@ -148,7 +159,7 @@
         <%= 
             f.text_field :other, 
             class: 'block appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-            value: number_with_precision(f.object.other, precision: 0, delimiter: ','),
+            value: humanized_money(f.object.other, precision: 0, delimiter: ','),
             placeholder: '$' 
         %>
         </div>

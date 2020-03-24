@@ -39,13 +39,11 @@
           <%= link_to 'Log out', logout_path, method: :delete, class: 'text-blue-500 hover:text-blue-300 text-lg' %>
         </li>
         <% else %>
-        <%# <li class="px-8 py-4 text-right">
-          <a href="/users/new" class="text-blue-500 hover:text-blue-300 text-2xl">Sign Up</a>
-        </li> %>
         <li class="px-8 py-4 text-right">
           <a href="/login" class="text-blue-500 hover:text-blue-300 text-lg">Log in / Sign up</a>
         </li>
         <% end %>
+       
       </ul>    
     </nav>
     <hr>
@@ -55,3 +53,13 @@
     </div>
   </body>
 </html>
+
+<script>
+export default {
+  data() {
+    return {
+      isOpen: false
+    }
+  }
+}
+</script>
