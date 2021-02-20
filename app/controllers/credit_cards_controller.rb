@@ -91,7 +91,7 @@ class CreditCardsController < ApplicationController
 
   private
     def credit_card_params
-      params.require(:credit_card).permit(:card_provider, :card_name, :card_network, :rewards_category, :annual_fee, :signup_bonus, :signup_bonus_spending_requirement, :gas, :transit, :rideshare, :entertainment, :streaming, :dining, :grocery, :drugstore, :department_store, :clothing, :travel, :hotel, :other)
+      params.require(:credit_card).permit(:card_provider, :card_name, :card_network, :rewards_category, :annual_fee, :signup_bonus, :signup_bonus_spending_requirement, :gas, :transit, :rideshare, :entertainment, :streaming, :dining, :grocery, :drugstore, :department_store, :clothing, :travel, :hotel, :other, :main_image)
     end
 
 end

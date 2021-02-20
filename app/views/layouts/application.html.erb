@@ -12,18 +12,27 @@
 
     <%= favicon_link_tag asset_path('favicon.ico') %>
 
+    <script>
+    export default {
+      data() {
+        return {
+          isOpen: false
+        }
+      }
+    }
+    </script>
   </head>
 
   <body class="bg-gray-100">
-    <nav class="bg-white border">
+    <nav class="h-18 bg-white border">
       <ul class="flex items-center">
         <li class="px-8 py-4">
           <a href="/">
-            <img class="h-8 mt-1 hover:bg-gray-100" src="/img/ccmania_logo.png" alt="CCMania">
+            <img class="h-8 mt-1 object-cover hover:bg-gray-100" src="/img/ccmania_logo.png" alt="CCMania">
           </a>
         </li>
         <li class="px-8 py-4">
-          <a href="/about_us" class="text-blue-500 hover:text-blue-300 text-lg">About Us</a>
+          <a href="/about_us" class="text-blue-500 hover:text-blue-300 text-lg">About</a>
         </li>
         <li class="px-8 py-4">
           <a href="/contact" class="text-blue-500 hover:text-blue-300 text-lg">Contact</a>
@@ -31,9 +40,17 @@
         <li class="px-8 py-4">
           <a href="/credit_cards" class="text-blue-500 hover:text-blue-300 text-lg">Credit Cards</a>
         </li>
+        
         <% if current_user %>
-        <li class="px-8 py-4 text-right">
-          <%= link_to 'My Profile', user_path(current_user.id), class: 'text-blue-500 hover:text-blue-300 text-lg' %>
+        <li class="ml-48">
+          <div class="py-1 px-2 rounded-full hover:border-solid hover:border-2 hover:border-gray-600 hover:bg-gray-200">
+            <div class="inline-block align-middle h-12 w-12 rounded-full border-2 overflow-hidden border-gray-600 focus:outline-none focus:border-white">
+              <%= image_tag current_user.main_image.variant(combine_options: {auto_orient: true, thumbnail: '300x300^', gravity: 'center', extent: '300x300' }) if current_user.main_image.attached? %>
+            </div>
+            <div class="inline-block align-middle px-2">
+              <%= link_to 'My Profile', user_path(current_user.id), class: 'text-blue-500 hover:text-blue-300 text-lg' %>
+            </div>
+          </div>
         </li>
         <li class="px-8 py-4 text-right">
           <%= link_to 'Log out', logout_path, method: :delete, class: 'text-blue-500 hover:text-blue-300 text-lg' %>
@@ -43,9 +60,11 @@
           <a href="/login" class="text-blue-500 hover:text-blue-300 text-lg">Log in / Sign up</a>
         </li>
         <% end %>
+        
        
       </ul>    
     </nav>
+   
     <hr>
     <hr>
     <div class="p-8 text-lg">
@@ -54,12 +73,3 @@
   </body>
 </html>
 
-<script>
-export default {
-  data() {
-    return {
-      isOpen: false
-    }
-  }
-}
-</script>

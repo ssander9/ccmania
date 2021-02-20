@@ -10,18 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_133213) do
+ActiveRecord::Schema.define(version: 2020_09_17_012437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "credit_cards", force: :cascade do |t|
     t.string "card_provider"
     t.string "card_name"
     t.string "card_network"
-    t.integer "signup_bonus"
-    t.integer "signup_bonus_spending_requirement"
-    t.integer "annual_fee"
     t.decimal "gas"
     t.decimal "transit"
     t.decimal "rideshare"
@@ -39,6 +57,11 @@ ActiveRecord::Schema.define(version: 2020_03_17_133213) do
     t.string "handle"
     t.string "rewards_category"
     t.decimal "hotel"
+    t.decimal "signup_bonus"
+    t.integer "signup_bonus_spending_requirement_cents", default: 0, null: false
+    t.string "signup_bonus_spending_requirement_currency", default: "USD", null: false
+    t.integer "annual_fee_cents", default: 0, null: false
+    t.string "annual_fee_currency", default: "USD", null: false
   end
 
   create_table "credit_cards_users_owned", force: :cascade do |t|
@@ -61,7 +84,6 @@ ActiveRecord::Schema.define(version: 2020_03_17_133213) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "annual_dining", default: "0.0"
     t.integer "gas_cents", default: 0, null: false
     t.string "gas_currency", default: "USD", null: false
     t.integer "transit_cents", default: 0, null: false
@@ -91,4 +113,5 @@ ActiveRecord::Schema.define(version: 2020_03_17_133213) do
     t.string "hotel_currency", default: "USD", null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end

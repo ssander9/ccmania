@@ -3,6 +3,7 @@ class User < ApplicationRecord
     has_and_belongs_to_many :owned_cards, join_table: :credit_cards_users_owned, class_name: 'CreditCard'
     # has_and_belongs_to_many :credit_cards, -> {distinct}
     has_secure_password
+    has_one_attached :main_image
 
     monetize :gas_cents
     monetize :transit_cents
@@ -20,5 +21,11 @@ class User < ApplicationRecord
 
     validates :name, presence: true
     validates :email, uniqueness: true, presence: true
+
+    CATEGORIES = [:gas, :transit, :rideshare, :entertainment, :streaming, :dining, :grocery, :drugstore, :department_store, :clothing, :travel, :hotel, :other]
+    
+    def categories
+        CATEGORIES
+    end
 
 end

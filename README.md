@@ -8,7 +8,7 @@ Users can create an account
 Admins can manage credit cards
   Create, Edit, Destroy
 
-## Second most important
+## 
 
 ### Getting started
 
@@ -19,17 +19,19 @@ First time running the app, run the following:
 - `rails db:create`
 - `rails db:migrate`
 
-#### Fourth
-##### Code Snippets
+#### Debug
 
-
-
-###### Max 6th
 Credit Card edit form
   Rewards points not saving right
   Defaults to cash_back
 
 Can't get the credit_cards.include? to work
+
+##### Snippets
+
+
+
+###### Moving Forward
 
 Credits
   Travel Credits
@@ -108,6 +110,13 @@ Rewards Calculator
     </div>
   <% end %>
 </div>
+
+<li class="w-1/8 px-8 py-4 text-right">
+          <%= link_to 'My Profile', user_path(current_user.id), class: 'text-blue-500 hover:text-blue-300 text-lg' %>
+        </li>
+        <li class="w-1/8 px-8 py-4 text-right">
+          <%= link_to 'Log out', logout_path, method: :delete, class: 'text-blue-500 hover:text-blue-300 text-lg' %>
+        </li>
 
 dropdown menu attempt
  <li class="px-2">

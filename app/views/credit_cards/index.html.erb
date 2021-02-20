@@ -9,7 +9,7 @@
       </div>
 
       <div class="">
-        <img class="mt-4 mb-2 h-full w-64 object-contain object-center rounded shadow-lg" src="<%="img/cards/#{credit_card.handle}.png"%>" alt="<%= "#{credit_card.handle}"%>">
+        <%= link_to (image_tag credit_card.main_image, class: 'mt-4 mb-2 h-full w-64 object-contain object-center rounded shadow-lg' if credit_card.main_image.attached?), credit_card_path(credit_card.handle) %>
       </div>
 
       <div class="text-gray-700 p-4">

@@ -164,6 +164,11 @@
         %>
         </div>
 
+        <%= f.label :main_image, class: 'block font-bold mt-4 mb-2' %>
+        <%=
+            f.file_field :main_image 
+        %>
+
         <%= 
             f.submit 'Update Profile', 
             class: 'block w-full cursor-pointer bg-green-500 shadow hover:bg-green-600 text-white py-2 px-4 leading-tight focus:outline-none focus:shadow-outline mt-6'
