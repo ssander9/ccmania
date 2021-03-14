@@ -1,13 +1,17 @@
 <div class="flex text-gray-800">
   <div class="p-8 ml-20 bg-gray-100 w-2/5">
     <p class="mb-4 font-bold"><%= "#{@credit_card.card_name.titlecase}" %></p>
-    <%= image_tag @credit_card.main_image, class: 'h-42 w-64 object-cover rounded-lg shadow-xl' if @credit_card.main_image.attached? %>
+    <% if @credit_card.main_image.attached? %>
+        <%= image_tag @credit_card.main_image, class: 'h-42 w-64 object-cover rounded-lg shadow-xl' %>
+    <% else %>
+        <img class="h-42 w-64 rounded-lg shadow-xl" src="/img/cards/blank_card.png" alt="card">
+    <% end %>
     <p class="font-semibold mt-10"> Details </p>
-    <p class="py-4"> <%= "Annual Fee: #{humanized_money_with_symbol(@credit_card.annual_fee)}*" %> </p>
+    <p class="py-4"> <%= "Annual Fee: #{humanized_money_with_symbol(@credit_card.annual_fee)}" %> </p>
     <% if @credit_card.rewards_category == 'cash_back' %>
-    <p class="max-w-sm"> <%= "Earn #{humanized_money_with_symbol(@credit_card.signup_bonus)} Cash Back after you spend #{humanized_money_with_symbol(@credit_card.signup_bonus_spending_requirement)} on your new card in the first 3 months."%></p>
+    <p class="max-w-sm"> <%= "Earn #{humanized_money_with_symbol(@credit_card.signup_bonus)} Cash Back after you spend #{humanized_money_with_symbol(@credit_card.signup_bonus_spending_requirement)} on your new card in the first 3 months.*"%></p>
     <% elsif @credit_card.rewards_category == 'points' %>
-    <p class="max-w-sm"> <%= "Earn #{@credit_card.signup_bonus} Rewards Points after you spend #{humanized_money_with_symbol(@credit_card.signup_bonus_spending_requirement)} on your new card in the first 3 months."%></p>
+    <p class="max-w-sm"> <%= "Earn #{@credit_card.signup_bonus} Rewards Points after you spend #{humanized_money_with_symbol(@credit_card.signup_bonus_spending_requirement)} on your new card in the first 3 months.*"%></p>
     <% else %>
     <p class="max-w-sm"> <%= "Earn #{number_with_precision(@credit_card.signup_bonus, delimiter: ',')} Miles after you spend #{humanized_money_with_symbol(@credit_card.signup_bonus_spending_requirement)} on your new card in the first 3 months."%></p>
     <% end %>
@@ -55,7 +59,7 @@
 
 <br>
 <% if current_user %>
-  <% if current_user.owned_cards.include? @credit_card %>
+  <% if current_user.owned_cards.exists?(@credit_card.id) %>
     <div class = "text-blue-500 hover:text-blue-300 text-lg">
       <%= link_to 'Remove Card from Wallet', remove_owned_credit_card_path(@credit_card.id) %>
     </div>
@@ -67,7 +71,7 @@
 <% end %>
 
 <% if current_user %>
-  <% if current_user.starred_cards.include? @credit_card %>
+  <% if current_user.starred_cards.exists?(@credit_card.id) %>
     <div class = "text-blue-500 hover:text-blue-300 text-lg">
       <%= link_to 'Remove Card from Bookmarks', remove_starred_credit_card_path(@credit_card.id) %>
     </div>
